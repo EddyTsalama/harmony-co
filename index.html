@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Future Skills Academy Harmony</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@500;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --violet:#8B5CF6;
+    --orange:#F97316;
+    --navy:#1E3A8A;
+    --gold:#D4AF37;
+    --white:#FFFFFF;
+    --cream:#F5F5F4;
+    --ink:#2B2640;
+    --grad: linear-gradient(120deg, var(--violet), var(--orange));
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Poppins',sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Montserrat',sans-serif;font-weight:800;color:var(--navy);}
+  .brand-script{font-family:'Pacifico',cursive;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+
+  /* ===== Header ===== */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(245,245,244,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(30,58,138,0.08);
+  }
+  .nav-wrap{
+    max-width:1180px;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 28px;
+  }
+  .logo-group{display:flex;align-items:center;gap:12px;}
+  .logo-circle{
+    width:46px;height:46px;border-radius:50%;
+    background:var(--grad);
+    border:2px solid var(--navy);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--cream);font-family:'Montserrat';font-weight:800;font-size:18px;
+    flex-shrink:0;
+  }
+  .logo-text{font-family:'Pacifico';font-size:1.45rem;color:var(--navy);line-height:1;}
+  .logo-sub{font-size:0.55rem;letter-spacing:1.5px;color:var(--violet);font-family:'Montserrat';font-weight:700;text-transform:uppercase;}
+  nav ul{display:flex;gap:30px;align-items:center;}
+  nav a.navlink{
+    font-size:0.85rem;font-weight:500;color:var(--ink);
+    position:relative;padding:4px 0;
+  }
+  nav a.navlink::after{
+    content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;
+    background:var(--grad);transition:width .3s ease;
+  }
+  nav a.navlink:hover::after{width:100%;}
+  .lang-toggle{
+    display:flex;border:1.5px solid var(--navy);border-radius:20px;overflow:hidden;
+  }
+  .lang-toggle button{
+    background:none;border:none;padding:6px 14px;font-family:'Montserrat';font-weight:700;
+    font-size:0.75rem;cursor:pointer;color:var(--navy);transition:all .25s ease;
+  }
+  .lang-toggle button.active{background:var(--grad);color:#fff;}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+  .burger span{width:24px;height:2px;background:var(--navy);}
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;align-items:center;
+    padding:130px 28px 80px;
+    background:
+      radial-gradient(circle at 85% 15%, rgba(249,115,22,0.18), transparent 45%),
+      radial-gradient(circle at 10% 85%, rgba(139,92,246,0.18), transparent 45%),
+      var(--cream);
+    overflow:hidden;
+  }
+  .hero-inner{
+    max-width:1180px;margin:0 auto;width:100%;
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Montserrat';font-weight:700;font-size:0.72rem;
+    letter-spacing:2px;text-transform:uppercase;color:var(--violet);
+    margin-bottom:22px;
+  }
+  .eyebrow::before{content:'';width:28px;height:2px;background:var(--gold);}
+  .hero h1{
+    font-size:clamp(2.3rem,4.6vw,3.6rem);line-height:1.08;margin-bottom:22px;
+  }
+  .hero h1 .accent{
+    background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .slogan{
+    font-family:'Pacifico';font-size:1.35rem;color:var(--navy);margin-bottom:22px;
+    display:block;
+  }
+  .hero p.lead{
+    font-size:1.02rem;line-height:1.75;color:#4a4560;max-width:520px;margin-bottom:34px;
+  }
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{
+    font-family:'Montserrat';font-weight:700;font-size:0.85rem;
+    padding:15px 30px;border-radius:30px;border:none;cursor:pointer;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primary{
+    background:var(--grad);color:#fff;
+    box-shadow:0 12px 30px -10px rgba(139,92,246,0.55);
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 36px -8px rgba(249,115,22,0.5);}
+  .btn-ghost{
+    background:transparent;color:var(--navy);border:1.5px solid var(--navy);
+  }
+  .btn-ghost:hover{background:var(--navy);color:#fff;transform:translateY(-3px);}
+
+  .hero-badge-wrap{
+    position:relative;display:flex;align-items:center;justify-content:center;
+  }
+  .badge-ring{
+    position:relative;width:340px;height:340px;border-radius:50%;
+    background:var(--grad);
+    border:6px solid var(--navy);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 30px 60px -20px rgba(30,58,138,0.35);
+    animation:floaty 6s ease-in-out infinite;
+  }
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  .badge-ring img{width:78%;border-radius:50%;}
+  .orbit-dot{
+    position:absolute;width:14px;height:14px;border-radius:50%;background:var(--gold);
+    box-shadow:0 0 0 6px rgba(212,175,55,0.18);
+  }
+  .orbit-dot.d1{top:6%;left:12%;}
+  .orbit-dot.d2{bottom:10%;right:6%;}
+  .orbit-dot.d3{top:50%;right:-2%;}
+
+  section{padding:100px 28px;}
+  .section-inner{max-width:1180px;margin:0 auto;}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(1.8rem,3.2vw,2.5rem);line-height:1.15;margin-bottom:16px;}
+  .section-head p{color:#5a5570;font-size:1rem;line-height:1.7;}
+
+  /* ===== About ===== */
+  .about{background:#fff;}
+  .about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:60px;align-items:center;}
+  .about-visual{
+    position:relative;aspect-ratio:1;border-radius:50%;
+    background:var(--grad);
+    display:flex;align-items:center;justify-content:center;
+    border:5px solid var(--gold);
+    max-width:380px;margin:0 auto;
+  }
+  .about-visual::before{
+    content:'';position:absolute;inset:18px;border-radius:50%;
+    border:1.5px dashed rgba(255,255,255,0.5);
+  }
+  .about-visual span{
+    font-family:'Pacifico';color:#fff;font-size:2.1rem;text-align:center;padding:30px;
+  }
+  .about-text p{color:#4a4560;line-height:1.85;margin-bottom:18px;font-size:1rem;}
+  .stat-row{display:flex;gap:36px;margin-top:36px;flex-wrap:wrap;}
+  .stat{}
+  .stat .num{font-family:'Montserrat';font-weight:800;font-size:2rem;color:var(--navy);}
+  .stat .num span{color:var(--orange);}
+  .stat .label{font-size:0.78rem;color:#7a7590;letter-spacing:0.5px;}
+
+  /* ===== Services ===== */
+  .services{background:var(--cream);}
+  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
+  .service-card{
+    background:#fff;border-radius:24px;padding:38px 30px;
+    border:1px solid rgba(30,58,138,0.08);
+    transition:transform .3s ease, box-shadow .3s ease;
+    position:relative;overflow:hidden;
+  }
+  .service-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:5px;background:var(--grad);
+    transform:scaleX(0);transform-origin:left;transition:transform .35s ease;
+  }
+  .service-card:hover{transform:translateY(-8px);box-shadow:0 24px 50px -20px rgba(30,58,138,0.18);}
+  .service-card:hover::before{transform:scaleX(1);}
+  .service-icon{
+    width:56px;height:56px;border-radius:50%;
+    border:2px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:22px;color:var(--navy);font-size:1.4rem;
+  }
+  .service-card h3{font-size:1.15rem;margin-bottom:14px;}
+  .service-card p{color:#5a5570;font-size:0.92rem;line-height:1.7;margin-bottom:16px;}
+  .service-card ul{display:flex;flex-direction:column;gap:8px;}
+  .service-card ul li{
+    font-size:0.85rem;color:var(--ink);display:flex;gap:8px;align-items:flex-start;
+  }
+  .service-card ul li::before{content:'✦';color:var(--gold);font-size:0.7rem;margin-top:3px;}
+
+  /* ===== Conditions ===== */
+  .conditions{background:#fff;}
+  .cond-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+  .cond-item{
+    padding:26px 28px;border-radius:18px;background:var(--cream);
+    border-left:4px solid var(--violet);
+  }
+  .cond-item h4{font-family:'Montserrat';font-weight:700;color:var(--navy);font-size:0.95rem;margin-bottom:8px;}
+  .cond-item p{font-size:0.86rem;color:#5a5570;line-height:1.65;}
+  .cond-note{
+    margin-top:30px;padding:20px 26px;border-radius:14px;
+    background:linear-gradient(120deg, rgba(139,92,246,0.08), rgba(249,115,22,0.08));
+    font-size:0.85rem;color:var(--navy);line-height:1.7;
+  }
+
+  /* ===== Contact ===== */
+  .contact{
+    background:linear-gradient(160deg, var(--navy) 0%, #2a1e63 60%, var(--violet) 130%);
+    color:#fff;position:relative;overflow:hidden;
+  }
+  .contact::before{
+    content:'';position:absolute;width:500px;height:500px;border-radius:50%;
+    background:radial-gradient(circle, rgba(249,115,22,0.25), transparent 70%);
+    top:-200px;right:-150px;
+  }
+  .contact .section-head h2{color:#fff;}
+  .contact .section-head p{color:rgba(255,255,255,0.75);}
+  .contact .eyebrow{color:var(--gold);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;position:relative;z-index:2;}
+  .contact-info{display:flex;flex-direction:column;gap:22px;}
+  .contact-row{display:flex;gap:16px;align-items:flex-start;}
+  .c-icon{
+    width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,0.1);
+    border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;font-size:1.05rem;
+  }
+  .contact-row h4{font-family:'Montserrat';font-size:0.85rem;color:var(--gold);margin-bottom:4px;letter-spacing:0.4px;}
+  .contact-row p, .contact-row a{font-size:0.92rem;color:rgba(255,255,255,0.9);}
+  .contact-row a:hover{color:var(--gold);}
+
+  form.contact-form{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:22px;padding:34px;backdrop-filter:blur(6px);
+  }
+  .form-group{margin-bottom:18px;}
+  .form-group label{display:block;font-size:0.78rem;margin-bottom:7px;color:rgba(255,255,255,0.8);font-family:'Montserrat';font-weight:600;}
+  .form-group input, .form-group textarea, .form-group select{
+    width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.2);
+    background:rgba(255,255,255,0.08);color:#fff;font-family:'Poppins';font-size:0.9rem;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder{color:rgba(255,255,255,0.45);}
+  .form-group textarea{resize:vertical;min-height:100px;}
+  .form-group select option{color:#1E3A8A;}
+  .btn-submit{
+    width:100%;background:var(--grad);color:#fff;border:none;border-radius:30px;
+    padding:15px;font-family:'Montserrat';font-weight:700;font-size:0.9rem;cursor:pointer;
+    transition:transform .25s ease;
+  }
+  .btn-submit:hover{transform:translateY(-3px);}
+  .form-note{font-size:0.74rem;color:rgba(255,255,255,0.55);margin-top:12px;text-align:center;}
+
+  /* ===== Footer ===== */
+  footer{
+    background:#170f38;color:rgba(255,255,255,0.7);padding:46px 28px 26px;
+  }
+  .footer-inner{
+    max-width:1180px;margin:0 auto;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;
+  }
+  .footer-brand{display:flex;align-items:center;gap:12px;}
+  .footer-logo{
+    width:38px;height:38px;border-radius:50%;background:var(--grad);
+    border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;
+    color:#fff;font-family:'Pacifico';font-size:1rem;
+  }
+  footer .footer-links{display:flex;gap:24px;font-size:0.8rem;}
+  footer .footer-links a:hover{color:var(--gold);}
+  .footer-bottom{
+    max-width:1180px;margin:30px auto 0;padding-top:22px;
+    border-top:1px solid rgba(255,255,255,0.1);
+    font-size:0.74rem;color:rgba(255,255,255,0.45);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  }
+
+  /* ===== Mobile ===== */
+  @media(max-width:920px){
+    nav ul{position:fixed;top:74px;left:0;right:0;background:var(--cream);
+      flex-direction:column;padding:24px 28px;gap:18px;
+      box-shadow:0 16px 30px -10px rgba(0,0,0,0.1);
+      transform:translateY(-130%);transition:transform .35s ease;}
+    nav ul.open{transform:translateY(0);}
+    .burger{display:flex;}
+    .hero-inner{grid-template-columns:1fr;text-align:center;}
+    .hero p.lead{margin-left:auto;margin-right:auto;}
+    .hero-ctas{justify-content:center;}
+    .hero-badge-wrap{order:-1;}
+    .badge-ring{width:230px;height:230px;}
+    .about-grid{grid-template-columns:1fr;}
+    .service-grid{grid-template-columns:1fr;}
+    .cond-grid{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .footer-inner{flex-direction:column;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="#top" class="logo-group">
+      <div class="logo-circle">H</div>
+      <div>
+        <div class="logo-text">Harmony</div>
+        <div class="logo-sub" data-fr="Future Skills Academy" data-en="Future Skills Academy">Future Skills Academy</div>
+      </div>
+    </a>
+    <nav>
+      <ul id="navList">
+        <li><a class="navlink" href="#about" data-fr="À propos" data-en="About">À propos</a></li>
+        <li><a class="navlink" href="#services" data-fr="Formations" data-en="Programs">Formations</a></li>
+        <li><a class="navlink" href="#conditions" data-fr="Conditions" data-en="Terms">Conditions</a></li>
+        <li><a class="navlink" href="#contact" data-fr="Contact" data-en="Contact">Contact</a></li>
+        <li class="lang-toggle">
+          <button id="btnFr" class="active">FR</button>
+          <button id="btnEn">EN</button>
+        </li>
+      </ul>
+    </nav>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow" data-fr="Institut académique en ligne" data-en="Online academic institute">Institut académique en ligne</div>
+      <h1 data-fr='Apprends le monde, <span class="accent">reste malagasy</span>' data-en='Learn the world, <span class="accent">stay malagasy</span>'>Apprends le monde, <span class="accent">reste malagasy</span></h1>
+      <span class="slogan" data-fr="Future Skills Academy Harmony" data-en="Future Skills Academy Harmony">Future Skills Academy Harmony</span>
+      <p class="lead" data-fr="Harmony est une entreprise éducative basée à Madagascar qui regroupe plusieurs instituts académiques en ligne : langues, patrimoine malgache et orientation universitaire à l'étranger." data-en="Harmony is an educational company based in Madagascar, bringing together several online academic institutes: languages, Malagasy heritage and study-abroad guidance.">Harmony est une entreprise éducative basée à Madagascar qui regroupe plusieurs instituts académiques en ligne : langues, patrimoine malgache et orientation universitaire à l'étranger.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary" data-fr="Nous contacter" data-en="Contact us">Nous contacter</a>
+        <a href="#services" class="btn btn-ghost" data-fr="Voir les formations" data-en="See programs">Voir les formations</a>
+      </div>
+    </div>
+    <div class="hero-badge-wrap">
+      <div class="badge-ring">
+        <img src="logo.jpg" alt="Harmony logo">
+      </div>
+      <div class="orbit-dot d1"></div>
+      <div class="orbit-dot d2"></div>
+      <div class="orbit-dot d3"></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="section-inner about-grid">
+    <div class="about-visual">
+      <span class="brand-script">Harmony</span>
+    </div>
+    <div class="about-text">
+      <div class="eyebrow" data-fr="Notre mission" data-en="Our mission">Notre mission</div>
+      <h2 data-fr="Le savoir, sans perdre nos racines" data-en="Knowledge, without losing our roots" style="margin-bottom:20px;">Le savoir, sans perdre nos racines</h2>
+      <p data-fr="Harmony accompagne les étudiants malgaches dans l'apprentissage des langues, la valorisation du patrimoine culturel et la réussite de leurs projets universitaires à l'étranger, tout en restant ancrés dans l'identité malagasy." data-en="Harmony supports Malagasy students in language learning, cultural heritage appreciation, and the success of their study-abroad projects, all while staying rooted in their Malagasy identity.">Harmony accompagne les étudiants malgaches dans l'apprentissage des langues, la valorisation du patrimoine culturel et la réussite de leurs projets universitaires à l'étranger, tout en restant ancrés dans l'identité malagasy.</p>
+      <p data-fr="Nos cours se déroulent 100% en ligne et en direct, avec des supports fournis et un suivi pédagogique personnalisé pour chaque étudiant." data-en="Our courses run 100% online and live, with provided materials and personalized academic follow-up for every student.">Nos cours se déroulent 100% en ligne et en direct, avec des supports fournis et un suivi pédagogique personnalisé pour chaque étudiant.</p>
+      <div class="stat-row">
+        <div class="stat">
+          <div class="num">3<span>+</span></div>
+          <div class="label" data-fr="DOMAINES DE FORMATION" data-en="TRAINING AREAS">DOMAINES DE FORMATION</div>
+        </div>
+        <div class="stat">
+          <div class="num">100<span>%</span></div>
+          <div class="label" data-fr="COURS EN LIGNE" data-en="ONLINE COURSES">COURS EN LIGNE</div>
+        </div>
+        <div class="stat">
+          <div class="num"><span>MG</span></div>
+          <div class="label" data-fr="BASÉ À MADAGASCAR" data-en="BASED IN MADAGASCAR">BASÉ À MADAGASCAR</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow" data-fr="Nos services" data-en="Our services">Nos services</div>
+      <h2 data-fr="Trois piliers, un même cap" data-en="Three pillars, one direction">Trois piliers, un même cap</h2>
+      <p data-fr="Des formations en ligne pensées pour ouvrir des portes, sans jamais effacer d'où l'on vient." data-en="Online programs designed to open doors, without ever erasing where we come from.">Des formations en ligne pensées pour ouvrir des portes, sans jamais effacer d'où l'on vient.</p>
+    </div>
+    <div class="service-grid">
+
+      <div class="service-card">
+        <div class="service-icon">🎓</div>
+        <h3 data-fr="Formation linguistique" data-en="Language training">Formation linguistique</h3>
+        <p data-fr="Cours en ligne dispensés par des professeurs étrangers maîtrisant le malagasy." data-en="Online courses taught by foreign teachers who also speak Malagasy.">Cours en ligne dispensés par des professeurs étrangers maîtrisant le malagasy.</p>
+        <ul>
+          <li data-fr="Anglais & Français" data-en="English & French">Anglais & Français</li>
+          <li data-fr="Hindi (niveau anglais requis)" data-en="Hindi (English level required)">Hindi (niveau anglais requis)</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🌿</div>
+        <h3 data-fr="Formation patrimoine" data-en="Heritage training">Formation patrimoine</h3>
+        <p data-fr="Préservation et transmission de la culture malgache, en ligne avec des professeurs basés à Madagascar." data-en="Preserving and passing on Malagasy culture, online with teachers based in Madagascar.">Préservation et transmission de la culture malgache, en ligne avec des professeurs basés à Madagascar.</p>
+        <ul>
+          <li data-fr="Langue des signes malgache" data-en="Malagasy sign language">Langue des signes malgache</li>
+          <li data-fr="Kabary (art oratoire malgache)" data-en="Kabary (Malagasy oratory art)">Kabary (art oratoire malgache)</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🧭</div>
+        <h3 data-fr="Orientation universitaire" data-en="University guidance">Orientation universitaire</h3>
+        <p data-fr="Accompagnement des étudiants vers des universités à l'étranger, notamment en Inde." data-en="Supporting students toward universities abroad, particularly in India.">Accompagnement des étudiants vers des universités à l'étranger, notamment en Inde.</p>
+        <ul>
+          <li data-fr="Choix de filière & dossier" data-en="Program choice & application">Choix de filière & dossier</li>
+          <li data-fr="Aide à la demande de visa étudiant" data-en="Student visa application support">Aide à la demande de visa étudiant</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="conditions" id="conditions">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow" data-fr="Termes & conditions" data-en="Terms & conditions">Termes & conditions</div>
+      <h2 data-fr="L'essentiel à savoir" data-en="The essentials">L'essentiel à savoir</h2>
+      <p data-fr="Un aperçu clair de nos engagements mutuels. Le détail complet est disponible sur simple demande." data-en="A clear overview of our mutual commitments. Full details are available on request.">Un aperçu clair de nos engagements mutuels. Le détail complet est disponible sur simple demande.</p>
+    </div>
+    <div class="cond-grid">
+      <div class="cond-item">
+        <h4 data-fr="Inscription" data-en="Enrollment">Inscription</h4>
+        <p data-fr="Via nos formulaires en ligne, WhatsApp, page Facebook officielle ou auprès de notre siège." data-en="Through our online forms, WhatsApp, official Facebook page, or directly at our office.">Via nos formulaires en ligne, WhatsApp, page Facebook officielle ou auprès de notre siège.</p>
+      </div>
+      <div class="cond-item">
+        <h4 data-fr="Paiement" data-en="Payment">Paiement</h4>
+        <p data-fr="Paiement intégral avant le début des cours. Tarifs en MGA ou USD selon le cours. MVola, Orange Money, Airtel Money, virement bancaire." data-en="Full payment before the course starts. Rates in MGA or USD depending on the course. MVola, Orange Money, Airtel Money, bank transfer.">Paiement intégral avant le début des cours. Tarifs en MGA ou USD selon le cours. MVola, Orange Money, Airtel Money, virement bancaire.</p>
+      </div>
+      <div class="cond-item">
+        <h4 data-fr="Déroulement des cours" data-en="Course delivery">Déroulement des cours</h4>
+        <p data-fr="100% en ligne et en direct. Supports fournis. Un rattrapage maximum par module sur justificatif." data-en="100% online and live. Materials provided. One make-up session maximum per module, with proof.">100% en ligne et en direct. Supports fournis. Un rattrapage maximum par module sur justificatif.</p>
+      </div>
+      <div class="cond-item">
+        <h4 data-fr="Remboursement" data-en="Refunds">Remboursement</h4>
+        <p data-fr="Aucun remboursement après 48h suivant le premier cours, ou après soumission du dossier universitaire, sauf annulation par Harmony." data-en="No refund after 48h following the first course, or after submission of the university file, except if Harmony cancels the service.">Aucun remboursement après 48h suivant le premier cours, ou après soumission du dossier universitaire, sauf annulation par Harmony.</p>
+      </div>
+      <div class="cond-item">
+        <h4 data-fr="Propriété intellectuelle" data-en="Intellectual property">Propriété intellectuelle</h4>
+        <p data-fr="Tous les supports, enregistrements et méthodes Harmony sont protégés. Partage, vente ou reproduction interdits." data-en="All Harmony materials, recordings and methods are protected. Sharing, selling or reproducing them is forbidden.">Tous les supports, enregistrements et méthodes Harmony sont protégés. Partage, vente ou reproduction interdits.</p>
+      </div>
+      <div class="cond-item">
+        <h4 data-fr="Protection des données" data-en="Data protection">Protection des données</h4>
+        <p data-fr="Les données des étudiants ne sont jamais vendues. Elles servent uniquement au suivi académique, conformément à la loi malgache." data-en="Student data is never sold. It is used solely for academic follow-up, in compliance with Malagasy law.">Les données des étudiants ne sont jamais vendues. Elles servent uniquement au suivi académique, conformément à la loi malgache.</p>
+      </div>
+    </div>
+    <div class="cond-note" data-fr="Harmony n'est pas responsable des coupures internet de l'étudiant. Pour le service d'orientation, Harmony agit comme intermédiaire : les frais, conditions d'études et de vie en Inde dépendent de l'université et des autorités indiennes." data-en="Harmony is not responsible for the student's internet outages. For the guidance service, Harmony acts as an intermediary: fees, study and living conditions in India depend on the university and Indian authorities.">
+      Harmony n'est pas responsable des coupures internet de l'étudiant. Pour le service d'orientation, Harmony agit comme intermédiaire : les frais, conditions d'études et de vie en Inde dépendent de l'université et des autorités indiennes.
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow" data-fr="Parlons-en" data-en="Let's talk">Parlons-en</div>
+      <h2 data-fr="Prêt à commencer ?" data-en="Ready to start?">Prêt à commencer ?</h2>
+      <p data-fr="Une question sur nos formations ou l'orientation universitaire ? Écrivez-nous, nous répondons rapidement." data-en="A question about our programs or university guidance? Write to us, we reply quickly.">Une question sur nos formations ou l'orientation universitaire ? Écrivez-nous, nous répondons rapidement.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-row">
+          <div class="c-icon">📞</div>
+          <div>
+            <h4 data-fr="Téléphone / WhatsApp" data-en="Phone / WhatsApp">Téléphone / WhatsApp</h4>
+            <a href="tel:+261389883347">+261 389 883 347</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="c-icon">✉️</div>
+          <div>
+            <h4 data-fr="Email" data-en="Email">Email</h4>
+            <a href="mailto:harmonycorporation26@gmail.com">harmonycorporation26@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="c-icon">📍</div>
+          <div>
+            <h4 data-fr="Adresse" data-en="Address">Adresse</h4>
+            <p>Centre commercial Fihavanana center, box 110, Tsarasaotra, Antsirabe</p>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="c-icon">🌐</div>
+          <div>
+            <h4 data-fr="Réseaux" data-en="Social">Réseaux</h4>
+            <a href="https://facebook.com/harmony.co" target="_blank" rel="noopener">facebook.com/harmony.co</a>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm">
+        <div class="form-group">
+          <label data-fr="Nom complet" data-en="Full name">Nom complet</label>
+          <input type="text" placeholder="..." required>
+        </div>
+        <div class="form-group">
+          <label data-fr="Email ou WhatsApp" data-en="Email or WhatsApp">Email ou WhatsApp</label>
+          <input type="text" placeholder="..." required>
+        </div>
+        <div class="form-group">
+          <label data-fr="Sujet" data-en="Subject">Sujet</label>
+          <select>
+            <option data-fr="Formation linguistique" data-en="Language training">Formation linguistique</option>
+            <option data-fr="Formation patrimoine" data-en="Heritage training">Formation patrimoine</option>
+            <option data-fr="Orientation universitaire" data-en="University guidance">Orientation universitaire</option>
+            <option data-fr="Autre" data-en="Other">Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label data-fr="Message" data-en="Message">Message</label>
+          <textarea placeholder="..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit" data-fr="Envoyer le message" data-en="Send message">Envoyer le message</button>
+        <p class="form-note" data-fr="Vous pouvez aussi nous écrire directement sur WhatsApp." data-en="You can also write to us directly on WhatsApp.">Vous pouvez aussi nous écrire directement sur WhatsApp.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">H</div>
+      <div>
+        <div style="font-family:'Pacifico';font-size:1.1rem;color:#fff;">Harmony</div>
+        <div style="font-size:0.7rem;color:rgba(255,255,255,0.5);" data-fr="Future Skills Academy" data-en="Future Skills Academy">Future Skills Academy</div>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="#about" data-fr="À propos" data-en="About">À propos</a>
+      <a href="#services" data-fr="Formations" data-en="Programs">Formations</a>
+      <a href="#conditions" data-fr="Conditions" data-en="Terms">Conditions</a>
+      <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Harmony — Future Skills Academy</span>
+    <span data-fr="Apprends le monde, reste malagasy" data-en="Learn the world, stay malagasy">Apprends le monde, reste malagasy</span>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const navList = document.getElementById('navList');
+  burger.addEventListener('click', () => navList.classList.toggle('open'));
+  navList.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navList.classList.remove('open')));
+
+  const btnFr = document.getElementById('btnFr');
+  const btnEn = document.getElementById('btnEn');
+
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-fr]').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if(val !== null) el.innerHTML = val;
+    });
+    btnFr.classList.toggle('active', lang === 'fr');
+    btnEn.classList.toggle('active', lang === 'en');
+  }
+
+  btnFr.addEventListener('click', () => setLang('fr'));
+  btnEn.addEventListener('click', () => setLang('en'));
+
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const lang = document.documentElement.lang || 'fr';
+    alert(lang === 'fr' ? 'Merci ! Votre message a bien été noté. Nous vous répondrons rapidement.' : 'Thank you! Your message has been recorded. We will reply soon.');
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
