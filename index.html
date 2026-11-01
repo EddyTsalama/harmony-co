@@ -6,6 +6,7 @@
 <title>Future Skills Academy Harmony</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@500;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/animations.css">
 <style>
   :root{
     --violet:#8B5CF6;
@@ -524,7 +525,7 @@
         </div>
         <div class="form-group">
           <label data-fr="Sujet" data-en="Subject">Sujet</label>
-          <select>
+          <select required>
             <option data-fr="Formation linguistique" data-en="Language training">Formation linguistique</option>
             <option data-fr="Formation patrimoine" data-en="Heritage training">Formation patrimoine</option>
             <option data-fr="Orientation universitaire" data-en="University guidance">Orientation universitaire</option>
@@ -536,7 +537,7 @@
           <textarea placeholder="..." required></textarea>
         </div>
         <button type="submit" class="btn-submit" data-fr="Envoyer le message" data-en="Send message">Envoyer le message</button>
-        <p class="form-note" data-fr="Vous pouvez aussi nous écrire directement sur WhatsApp." data-en="You can also write to us directly on WhatsApp.">Vous pouvez aussi nous écrire directement sur WhatsApp.</p>
+        <div class="form-note" data-fr="Vous pouvez aussi nous écrire directement sur WhatsApp." data-en="You can also write to us directly on WhatsApp.">Vous pouvez aussi nous écrire directement sur WhatsApp.</div>
       </form>
     </div>
   </div>
@@ -547,8 +548,8 @@
     <div class="footer-brand">
       <div class="footer-logo">H</div>
       <div>
-        <div style="font-family:'Pacifico';font-size:1.1rem;color:#fff;">Harmony</div>
-        <div style="font-size:0.7rem;color:rgba(255,255,255,0.5);" data-fr="Future Skills Academy" data-en="Future Skills Academy">Future Skills Academy</div>
+        <div class="logo-text" style="color:#fff;">Harmony</div>
+        <div class="logo-sub" data-fr="Future Skills Academy" data-en="Future Skills Academy">Future Skills Academy</div>
       </div>
     </div>
     <div class="footer-links">
@@ -559,40 +560,26 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>&copy; 2026 Harmony — Future Skills Academy</span>
+    <span>© 2026 Harmony Future Skills Academy</span>
     <span data-fr="Apprends le monde, reste malagasy" data-en="Learn the world, stay malagasy">Apprends le monde, reste malagasy</span>
   </div>
 </footer>
 
+<script src="assets/animations.js"></script>
 <script>
-  const burger = document.getElementById('burger');
-  const navList = document.getElementById('navList');
-  burger.addEventListener('click', () => navList.classList.toggle('open'));
-  navList.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navList.classList.remove('open')));
-
-  const btnFr = document.getElementById('btnFr');
-  const btnEn = document.getElementById('btnEn');
-
+  const btnFr=document.getElementById('btnFr');
+  const btnEn=document.getElementById('btnEn');
+  const burger=document.getElementById('burger');
+  const navList=document.getElementById('navList');
   function setLang(lang){
-    document.documentElement.lang = lang;
-    document.querySelectorAll('[data-fr]').forEach(el => {
-      const val = el.getAttribute('data-' + lang);
-      if(val !== null) el.innerHTML = val;
-    });
-    btnFr.classList.toggle('active', lang === 'fr');
-    btnEn.classList.toggle('active', lang === 'en');
+    document.querySelectorAll('[data-fr]').forEach(el=>{el.innerHTML=el.getAttribute('data-'+lang);});
+    btnFr.classList.toggle('active',lang==='fr');
+    btnEn.classList.toggle('active',lang==='en');
   }
-
-  btnFr.addEventListener('click', () => setLang('fr'));
-  btnEn.addEventListener('click', () => setLang('en'));
-
-  document.getElementById('contactForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    const lang = document.documentElement.lang || 'fr';
-    alert(lang === 'fr' ? 'Merci ! Votre message a bien été noté. Nous vous répondrons rapidement.' : 'Thank you! Your message has been recorded. We will reply soon.');
-    this.reset();
-  });
+  btnFr.addEventListener('click',()=>setLang('fr'));
+  btnEn.addEventListener('click',()=>setLang('en'));
+  burger.addEventListener('click',()=>navList.classList.toggle('open'));
+  navList.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navList.classList.remove('open')));
 </script>
-
 </body>
 </html>
